@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoTurma — Entrar</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="eco-auth-shell">
+    <div class="eco-auth-card">
+      <div class="eco-brand">
+        <i data-lucide="sprout" style="color:#3F7A52;width:22px;height:22px;"></i>
+        <span>Projeto de sustentabilidade</span>
+      </div>
+      <h1 class="eco-display" style="font-size:28px;font-weight:700;margin:0;line-height:1.1;">EcoTurma</h1>
+      <p style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5;">
+        Registro coletivo de ações sustentáveis da turma. Entre com sua conta para começar a contar o que você fez.
+      </p>
+
+      <div class="eco-tabs">
+        <button id="tab-login" class="eco-tab active" type="button">Entrar</button>
+        <button id="tab-register" class="eco-tab" type="button">Criar conta</button>
+      </div>
+
+      <div id="auth-error" class="eco-error" hidden></div>
+
+      <form id="form-login" class="eco-form">
+        <label for="login-username" style="font-size:13px;font-weight:500;">Usuário</label>
+        <input id="login-username" class="eco-input" type="text" autocomplete="username" placeholder="seu_usuario" />
+        <label for="login-password" style="font-size:13px;font-weight:500;">Senha</label>
+        <input id="login-password" class="eco-input" type="password" autocomplete="current-password" placeholder="••••••••" />
+        <button class="eco-btn" type="submit" style="margin-top:6px;">Entrar</button>
+      </form>
+
+      <form id="form-register" class="eco-form" hidden>
+        <label for="register-name" style="font-size:13px;font-weight:500;">Nome</label>
+        <input id="register-name" class="eco-input" type="text" placeholder="Como devemos te chamar" />
+        <label for="register-username" style="font-size:13px;font-weight:500;">Usuário</label>
+        <input id="register-username" class="eco-input" type="text" autocomplete="username" placeholder="escolha um usuário" />
+        <label for="register-password" style="font-size:13px;font-weight:500;">Senha</label>
+        <input id="register-password" class="eco-input" type="password" autocomplete="new-password" placeholder="mínimo 4 caracteres" />
+        <label for="register-confirm" style="font-size:13px;font-weight:500;">Confirmar senha</label>
+        <input id="register-confirm" class="eco-input" type="password" autocomplete="new-password" placeholder="repita a senha" />
+        <button class="eco-btn" type="submit" style="margin-top:6px;">Criar conta</button>
+      </form>
+
+      <p style="margin-top:18px;font-size:12px;color:var(--muted);line-height:1.5;">
+        Suas contas e ações ficam salvas neste navegador. Use o mesmo navegador/computador para ver os dados de toda a turma.
+      </p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/login.js"></script>
+  <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

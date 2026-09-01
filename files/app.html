@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoTurma</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="eco-container">
+    <div class="eco-topbar" style="margin-bottom:28px;">
+      <div>
+        <div class="eco-brand">
+          <i data-lucide="sprout" style="color:#3F7A52;width:22px;height:22px;"></i>
+          <span>Projeto de sustentabilidade</span>
+        </div>
+        <h1 class="eco-display" style="font-size:34px;font-weight:700;margin:0;line-height:1.1;">EcoTurma</h1>
+        <p style="margin-top:8px;color:var(--muted);font-size:14.5px;max-width:560px;line-height:1.5;">
+          Registro coletivo de ações sustentáveis do grupo. Cada pessoa anota o que fez, e o sistema soma o impacto de todo mundo.
+        </p>
+      </div>
+      <div style="text-align:right;white-space:nowrap;">
+        <div style="font-size:13px;color:var(--muted);">
+          Olá, <strong id="user-name" style="color:var(--ink);"></strong>
+        </div>
+        <button id="logout-btn" class="eco-btn-ghost" type="button" style="margin-top:4px;">Sair</button>
+      </div>
+    </div>
+
+    <div class="eco-hero-stats">
+      <div>
+        <div class="eco-display eco-stat-value" id="stat-points">0</div>
+        <div class="eco-stat-label">pontos acumulados</div>
+      </div>
+      <div>
+        <div class="eco-display eco-stat-value" id="stat-actions">0</div>
+        <div class="eco-stat-label">ações registradas</div>
+      </div>
+      <div>
+        <div class="eco-display eco-stat-value" id="stat-participants">0</div>
+        <div class="eco-stat-label">participantes ativos</div>
+      </div>
+    </div>
+
+    <div class="eco-grid">
+      <div>
+        <h2 class="eco-section-title">Registrar uma ação</h2>
+        <form id="form-log-action" class="eco-form">
+          <div id="category-buttons" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+          <textarea id="description" class="eco-input" rows="3" style="resize:vertical;"
+            placeholder="O que você fez? Ex: fui de bicicleta para a escola"></textarea>
+          <button class="eco-btn" type="submit" disabled>Registrar</button>
+        </form>
+
+        <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border);">
+          <h2 class="eco-section-title">Impacto por categoria</h2>
+          <div id="category-breakdown" style="display:flex;flex-direction:column;gap:10px;"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:28px;">
+        <div>
+          <h2 class="eco-section-title">Atividade do grupo</h2>
+          <div id="feed-list" class="eco-feed-list"></div>
+        </div>
+
+        <div>
+          <h2 class="eco-section-title">Ranking do grupo</h2>
+          <div id="leaderboard-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eco-footer-row">
+      <button id="reset-btn" class="eco-reset-btn" type="button">
+        <i data-lucide="trash-2"></i>
+        <span class="reset-label">Reiniciar dados do grupo</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
