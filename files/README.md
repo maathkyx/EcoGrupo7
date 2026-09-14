@@ -86,3 +86,24 @@ trocar o `localStorage` por um backend real, como:
 
 Isso ficaria isolado principalmente no arquivo `js/storage.js`, então dá
 para trocar a "camada de dados" sem precisar reescrever as telas.
+
+# Issue
+
+O js/storage.js usa crypto.subtle.digest('SHA-256', ...) para gerar o hash da senha antes de salvar no localStorage. Essa API do navegador só está disponível em "contextos seguros" (HTTPS ou http://localhost). Se o usuário abrir o index.html diretamente clicando duas vezes no arquivo (protocolo file://), crypto.subtle fica undefined em vários navegadores (ex.: Firefox), e o formulário de cadastro/login quebra sem nenhuma mensagem clara para quem está usando o site.
+
+Passos para reproduzir:
+
+Baixar os arquivos do projeto sem subir para o GitHub Pages.
+Dar duplo clique no index.html (abre como file:///...).
+Preencher o formulário "Criar conta" e enviar.
+
+Comportamento esperado:
+Ou o cadastro funciona normalmente, ou o site mostra uma mensagem amigável avisando que é preciso rodar um servidor local (python3 -m http.server 8000) em vez de abrir o arquivo direto.
+
+Comportamento atual:
+O clique no botão não dá nenhum retorno visível; no console aparece TypeError: Cannot read properties of undefined (reading 'digest').
+
+Sugestão de correção:
+Detectar window.isSecureContext === false (ou !window.crypto?.subtle) no login.js ao carregar a página e mostrar um aviso no lugar do erro do console, algo como: "Este site precisa ser aberto por um servidor local ou pelo GitHub Pages — veja o README."
+
+Labels sugeridas: bug, boa primeira contribuição
