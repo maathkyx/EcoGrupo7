@@ -10,12 +10,12 @@ servidor), para poder ser publicado gratuitamente no GitHub Pages.
 ## Estrutura do projeto
 
 ```
-ecoturma/
-├── index.html        # Tela de login e cadastro
-├── app.html          # Painel principal (só acessível logado)
-├── css/
-│   └── style.css     # Estilos do site
-└── js/
+EcoGrupo7/
+├── README.md
+└── files/
+    ├── index.html    # Tela de login e cadastro
+    ├── app.html      # Painel principal (só acessível logado)
+    ├── style.css     # Estilos do site
     ├── storage.js    # Categorias, usuários, senhas e ações (localStorage)
     ├── login.js      # Lógica da tela de login/cadastro
     └── app.js        # Lógica do painel principal
@@ -55,23 +55,24 @@ no GitHub Pages, e costuma ser suficiente para um projeto de faculdade.
    ```
 3. No repositório, vá em **Settings → Pages**.
 4. Em "Build and deployment", escolha **Deploy from a branch**, selecione a
-   branch `main` e a pasta `/ (root)`, depois clique em **Save**.
+   branch `main` e a pasta `/ (root)`, depois clique em **Save**. O site estará no caminho `/files/`.
 5. Depois de alguns instantes, o GitHub mostra o link do site, algo como
-   `https://SEU-USUARIO.github.io/ecoturma/`.
+   `https://SEU-USUARIO.github.io/ecoturma/files/`.
 
 Não precisa de nenhuma etapa de build (`npm install`, etc.) — é HTML puro.
 
 ## Rodando localmente antes de publicar
 
-Basta abrir o `index.html` num navegador. Se o navegador bloquear alguma
+Abra `files/index.html` num navegador. Se o navegador bloquear alguma
 funcionalidade por segurança ao abrir o arquivo direto (`file://`), rode um
 servidor local simples a partir da pasta do projeto:
 
 ```bash
+cd files
 python3 -m http.server 8000
 ```
 
-E acesse `http://localhost:8000`.
+E acesse `http://localhost:8000`. Se a Web Crypto API não estiver disponível, o formulário explica como abrir o site por localhost ou HTTPS.
 
 ## Próximos passos (se quiser evoluir o projeto)
 

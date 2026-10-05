@@ -78,13 +78,21 @@ function bufferToHex(buffer) {
     .join('');
 }
 
+function verificarCriptografia() {
+  if (!globalThis.crypto?.subtle) {
+    throw new Error('Abra o site por HTTPS ou por http://localhost:8000. Para rodar localmente, use python3 -m http.server 8000 na pasta files.');
+  }
+}
+
 function randomSalt() {
+  verificarCriptografia();
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
   return bufferToHex(bytes.buffer);
 }
 
 async function hashPassword(password, salt) {
+  verificarCriptografia();
   const encoder = new TextEncoder();
   const data = encoder.encode(salt + ':' + password);
   const digest = await crypto.subtle.digest('SHA-256', data);
